@@ -16,7 +16,6 @@ import { Client as Youtubei, MusicClient } from "youtubei";
 const youtubei = new Youtubei();
 
 import { draw } from "./commands/samples/draw.mjs";
-const CHANNELID = "1380548786799247440";
 
 let postCount = 0;
 const app = express();
