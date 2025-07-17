@@ -1234,5 +1234,15 @@ export async function execute(interaction) {
   }
 
   const selected = candidates[Math.floor(Math.random() * candidates.length)];
-  await interaction.reply(`🔥${selected}から逃げるな！🔥`);
+  try{
+    if(!interaction.replied && !interaction.deferred){
+      await interaction.reply(`🔥${selected}から逃げるな！🔥`);
+    }
+    else{
+      await interaction.followUp({content: `🔥${selected}から逃げるな！🔥`});
+    }
+  }
+  catch(error){
+    console.error(`[rdm.mjs error]`, err);
+  }
 }
