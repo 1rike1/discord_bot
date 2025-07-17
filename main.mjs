@@ -93,45 +93,46 @@ function getJSTTime() {
 }
 
 //メッセージを送信する関数
-function sendMessage(messageText) {
-  const channel = client.channels.cache.get(process.env.CHANNEL_ID);
-  if (channel) {
-    channel.send(messageText);
-  }
-  else {
-    console.log("⚠️チャンネルが見つかりませんでした");
-  }
-}
+function sendToChannel(options = {}) {
+  const channelId = process.env.CHANNEL_ID;
+  const channel = client.channels.cache.get(channelId);
 
-//drawメッセージを送信する関数
-function sendDrawMessage() {
-  const channel = client.channels.cache.get(process.env.CHANNEL_ID);
-  if (channel) {
-    const messageText = draw();  //キャラクター生成
-    channel.send(messageText);
-    console.log("✅20:00 - draw.mjsのキャラクター生成を実行しました");
+  if (!channel) {
+    console.log(`⚠️ チャンネルID ${channelId} に一致するチャンネルが見つかりませんでした`);
+    return;
   }
-  else {
-    console.log("⚠️チャンネルが見つかりませんでした");
+
+  let messageText = '';
+
+  if (options.useDraw) {
+    messageText = draw();
+    console.log("✅キャラクター生成メッセージを送信しました");
+  } else if (typeof options.text === 'string') {
+    messageText = options.text;
+  } else {
+    console.log("⚠️送信するテキストが指定されていません");
+    return;
   }
+
+  channel.send(messageText);
 }
 
 //毎分チェックする関数
 function checkTime() {
-  if (getJSTTime().startsWith("19:07")) {
-    sendMessage("てすとです");
+  if (getJSTTime().startsWith("19:15")) {
+    sendToChannel({ text: "てすとです" });
   }
   if (getJSTTime().startsWith("20:50")) {
-    sendMessage("ドローイング開始10分前です！");
+    sendToChannel({ text: "ドローイング開始10分前です！"});
   }
   if (getJSTTime().startsWith("21:00")) {
-    sendDrawMessage();
+    sendToChannel({ useDraw: true });
   }
   if (getJSTTime().startsWith("21:15")) {
-    sendMessage("半分経過！");
+    sendToChannel({ text: "半分経過！"});
   }
   if (getJSTTime().startsWith("21:30")) {
-    sendMessage("終了！");
+    sendToChannel({ text: "終了！"});
   }
 
 }
