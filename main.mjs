@@ -118,7 +118,7 @@ function sendDrawMessage() {
 
 //毎分チェックする関数
 function checkTime() {
-  if (getJSTTime().startsWith("18:15")) {
+  if (getJSTTime().startsWith("19:07")) {
     sendMessage("てすとです");
   }
   if (getJSTTime().startsWith("20:50")) {
