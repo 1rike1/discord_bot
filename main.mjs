@@ -119,9 +119,6 @@ function sendToChannel(options = {}) {
 
 //毎分チェックする関数
 function checkTime() {
-  if (getJSTTime().startsWith("19:15")) {
-    sendToChannel({ text: "てすとです" });
-  }
   if (getJSTTime().startsWith("20:50")) {
     sendToChannel({ text: "ドローイング開始10分前です！"});
   }
