@@ -1,11 +1,13 @@
 {
-  "name": "minipotato-bot-by-eoi",
+  "name": "otogeimu-bot",
   "version": "0.1.2",
-  "description": "MiniPotato Bot by EOi",
+  "description": "otogeimu Bot",
   "main": "main.mjs",
+  "type": "module",
   "scripts": {
     "start": "node main.mjs"
   },
+  
   "dependencies": {
     "discord.js": "^14.14.1",
     "sequelize": "^6.37.3",
@@ -17,7 +19,7 @@
     "youtubei": "^1.4.1"
   },
   "engines": {
-    "node": "16.x"
+    "node": ">=18.0.0"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/minipotato-bot-by-eoi"
