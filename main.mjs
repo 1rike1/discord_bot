@@ -94,7 +94,7 @@ function getJSTTime() {
 
 //メッセージを送信する関数
 function sendMessage(messageText) {
-  const channel = client.channels.cache.get(CHANNELID);
+  const channel = client.channels.cache.get(process.env.CHANNELID);
   if (channel) {
     channel.send(messageText);
   }
@@ -105,7 +105,7 @@ function sendMessage(messageText) {
 
 //drawメッセージを送信する関数
 function sendDrawMessage() {
-  const channel = client.channels.cache.get(CHANNELID);
+  const channel = client.channels.cache.get(process.env.CHANNELID);
   if (channel) {
     const messageText = draw();  //キャラクター生成
     channel.send(messageText);
