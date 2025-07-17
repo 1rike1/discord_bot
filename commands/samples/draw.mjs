@@ -46,5 +46,15 @@ export function draw(){
 
 export async function execute(interaction){
   const text = draw();
+    try{
+      if(!interaction.replied && !interaction.deferred){
 	await interaction.reply(text);
+      }
+      else{
+        await interaction.followUp({content: text});
+      }
+    }
+    catch (error){
+      console.error('[draw.mjs error]', error);
+    }
 }
