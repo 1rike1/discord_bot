@@ -44,7 +44,16 @@ export function generateCharacter() {
 
 export function draw(){
   const chara = generateCharacter();
-  const description = `  **キャラクター生成結果** \n髪型: ${chara.髪型} \n髪色: ${getRandomHexColor()} \n目: ${chara.目} \n目の色: ${getRandomHexColor()} \n性格: ${chara.性格}　\nテーマ: ${chara.テーマ} \nシチュエーション: ${chara.シチュエーション} \n条件: ${chara.条件}`;
+  const title = `  **キャラクター生成結果**`;
+  let descriptionLines = [];
+  for(const key in chara){
+  	//色コードをランダム生成する対象
+  	const value = (key == "髪色" || key == "目の色")
+    	? getRandomHexColor()
+	: chara[key]
+  	descriptionLines.push(`${key}: ${value}`);
+  }
+  const description = [title, ...descriptionLines].join('\n'); 
   return description;
 }
 
