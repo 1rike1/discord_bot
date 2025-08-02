@@ -44,7 +44,7 @@ export function generateCharacter() {
 
 export function draw(){
   const chara = generateCharacter();
-  const description = `  **キャラクター生成結果** \n髪型: ${chara.髪型} \n髪色: ${getRandomHexColor()} \n目: ${chara.目} \n目の色: ${getRandomHexColor()} \n服装: ${chara.服装} \n特徴: ${chara.特徴} \n性格: ${chara.性格}`;
+  const description = `  **キャラクター生成結果** \n髪型: ${chara.髪型} \n髪色: ${getRandomHexColor()} \n目: ${chara.目} \n目の色: ${getRandomHexColor()} \n性格: ${chara.性格}　\nテーマ: ${chara.テーマ} \nシチュエーション: ${chara.シチュエーション} \n条件: ${chara.条件}`;
   return description;
 }
 
