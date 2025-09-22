@@ -17,6 +17,9 @@ const youtubei = new Youtubei();
 
 import { draw } from "./commands/samples/draw.mjs";
 
+let drawingNotificationEnabled = true;
+global.drawingNotificationEnabled = true;
+
 let postCount = 0;
 const app = express();
 app.listen(3000);
@@ -119,19 +122,21 @@ function sendToChannel(options = {}) {
 
 //毎分チェックする関数
 function checkTime() {
-  if (getJSTTime().startsWith("20:50")) {
-    sendToChannel({ text: "ドローイング開始10分前です！"});
+  //✅オンのときに実行
+  if(drawingNotificationEnabled){
+    if (getJSTTime().startsWith("20:50")) {
+      sendToChannel({ text: "ドローイング開始10分前です！"});
+    }
+    if (getJSTTime().startsWith("21:00")) {
+      sendToChannel({ useDraw: true });
+    }
+    if (getJSTTime().startsWith("21:15")) {
+      sendToChannel({ text: "半分経過！"});
+    }
+    if (getJSTTime().startsWith("21:30")) {
+      sendToChannel({ text: "終了！"});
+    }
   }
-  if (getJSTTime().startsWith("21:00")) {
-    sendToChannel({ useDraw: true });
-  }
-  if (getJSTTime().startsWith("21:15")) {
-    sendToChannel({ text: "半分経過！"});
-  }
-  if (getJSTTime().startsWith("21:30")) {
-    sendToChannel({ text: "終了！"});
-  }
-
 }
 
 client.on("interactionCreate", async (interaction) => {
