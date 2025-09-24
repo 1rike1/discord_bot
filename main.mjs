@@ -17,7 +17,6 @@ const youtubei = new Youtubei();
 
 import { draw } from "./commands/samples/draw.mjs";
 
-let drawingNotificationEnabled = true;
 global.drawingNotificationEnabled = true;
 
 let postCount = 0;
@@ -122,8 +121,9 @@ function sendToChannel(options = {}) {
 
 //毎分チェックする関数
 function checkTime() {
+  console.log(`checkTime 通知:${global.drawingNotificationEnabled}`);
   //✅オンのときに実行
-  if(drawingNotificationEnabled){
+  if(global.drawingNotificationEnabled){
     if (getJSTTime().startsWith("20:50")) {
       sendToChannel({ text: "ドローイング開始10分前です！"});
     }
