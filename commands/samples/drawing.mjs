@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
+import { saveState } from "../stateManager.mjs";
 
 export const data = new SlashCommandBuilder()
   .setName("drawing")
@@ -15,12 +16,16 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction) {
   const mode = interaction.options.getString("mode");
-
   if (mode === "on") {
     global.drawingNotificationEnabled = true;
+    saveState();
     await interaction.reply("✅ ドローイング通知をオンにしました");
   } else {
     global.drawingNotificationEnabled = false;
+    saveState();
     await interaction.reply("🛑 ドローイング通知をオフにしました");
   }
 }
+
+
+
