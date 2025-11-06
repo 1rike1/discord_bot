@@ -6,6 +6,7 @@ import CommandsRegister from "./regist-commands.mjs";
 import Notification from "./models/notification.mjs";
 import YoutubeFeeds from "./models/youtubeFeeds.mjs";
 import YoutubeNotifications from "./models/youtubeNotifications.mjs";
+import { loadState, saveState } from "./stateManager.mjs";
 
 import Sequelize from "sequelize";
 import Parser from 'rss-parser';
@@ -18,6 +19,8 @@ const youtubei = new Youtubei();
 import { draw } from "./commands/samples/draw.mjs";
 
 global.drawingNotificationEnabled = true;
+
+loadState(); // 起動時に読み込み
 
 let postCount = 0;
 const app = express();
