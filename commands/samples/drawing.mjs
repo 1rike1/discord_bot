@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
-import { saveState } from "../stateManager.mjs";
+import { saveState } from "../../stateManager.mjs";
 
 export const data = new SlashCommandBuilder()
   .setName("drawing")
@@ -26,6 +26,7 @@ export async function execute(interaction) {
     await interaction.reply("🛑 ドローイング通知をオフにしました");
   }
 }
+
 
 
 
