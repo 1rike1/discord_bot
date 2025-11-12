@@ -1,6 +1,6 @@
 // stateManager.mjs
 import fs from "fs";
-const stateFile = "./drawingState.json";
+const stateFile = "drawingState.json";
 
 export function loadState() {
   try {
