@@ -128,16 +128,16 @@ function checkTime() {
   //✅オンのときに実行
   if(global.drawingNotificationEnabled){
     if (getJSTTime().startsWith("20:50")) {
-      sendToChannel({ text: "ドローイング開始10分前です！"});
+      //sendToChannel({ text: "ドローイング開始10分前です！"});
     }
     if (getJSTTime().startsWith("21:00")) {
-      sendToChannel({ useDraw: true });
+      //sendToChannel({ useDraw: true });
     }
     if (getJSTTime().startsWith("21:15")) {
-      sendToChannel({ text: "半分経過！"});
+      //sendToChannel({ text: "半分経過！"});
     }
     if (getJSTTime().startsWith("21:30")) {
-      sendToChannel({ text: "終了！"});
+      //sendToChannel({ text: "終了！"});
     }
   }
 }
